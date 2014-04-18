@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 
 import kr.co.mycom.obstacle.ObstacleDTO;
 
-public class AssetDAO {
+public class AssetDAO {// d
 	public Connection getCon() {
 		Connection con = null;
 		Context initContext = null;
@@ -32,7 +32,7 @@ public class AssetDAO {
 		return con;
 	} // getCon
 
-	public boolean insertAsset(AssetDTO dto) throws UnsupportedEncodingException { // ÀúÀå ¼º°ø½Ã true ½ÇÆÐ½Ã false (ÀÌ°É		
+	public boolean insertAsset(AssetDTO dto) throws UnsupportedEncodingException { // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ true ï¿½ï¿½ï¿½Ð½ï¿½ false (ï¿½Ì°ï¿½		
 
 		boolean ok = false;
 		String sql = "INSERT INTO assets (a_gnum, a_anum, a_company, a_place, a_dept, a_locate, a_id, a_name, a_getdate, " +
@@ -42,14 +42,14 @@ public class AssetDAO {
 		String sql_anum = "SELECT a_anum FROM assets WHERE `a_anum` LIKE 'A%' ORDER BY `a_anum` DESC;";
 
 		Connection con = null;
-		PreparedStatement ps = null; // ÁØºñµÈ ¸í·É ¹«¾ùÀÌ? À§¿¡ ??µéÀ» Ã¤¿ì°Ú´Ù.
+		PreparedStatement ps = null; // ï¿½Øºï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½? ï¿½ï¿½ï¿½ï¿½ ??ï¿½ï¿½ï¿½ï¿½ Ã¤ï¿½ï¿½Ú´ï¿½.
 		ResultSet rs = null;
 		String confirm_anum = null;
 		try {
 			con = getCon();
 			ps = con.prepareStatement(sql_anum);
 			rs = ps.executeQuery();
-			if (rs.next()) { // °á°ú°¡ ÀÖÀ¸¸é
+			if (rs.next()) { // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				confirm_anum = rs.getString("a_anum");
 				String[] split_anum = confirm_anum.split("_");
 				int temp = Integer.parseInt(split_anum[1]);
@@ -62,7 +62,7 @@ public class AssetDAO {
 			
 			ps = con.prepareStatement(sql);
 			
-			// ?¿¡ °ªµéÀ» Ã¤¿î´Ù.
+			// ?ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¤ï¿½ï¿½ï¿½.
 			ps.setString(1, "LDCC");
 			ps.setString(2, confirm_anum);
 			ps.setString(3, dto.getA_company());
@@ -85,9 +85,9 @@ public class AssetDAO {
 			ps.setString(20, "1");
 			
 			int cnt = ps.executeUpdate(); // insert, update, delete, select :
-			// executeQuery() ¸Þ¼Òµå »ç¿ë
+			// executeQuery() ï¿½Þ¼Òµï¿½ ï¿½ï¿½ï¿½
 			if (cnt == 1)
-				ok = true; // executeUpdate °¡ ¼º°øÇÏ¸é 1À» ¹ÝÈ¯ÇÑ´Ù.
+				ok = true; // executeUpdate ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ 1ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ñ´ï¿½.
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -110,7 +110,7 @@ public class AssetDAO {
 				}
 			}
 		}
-		return ok; // ¼º°øÇÏ¸é true, ½ÇÆÐÇÏ¸é false ¸®ÅÏ
+		return ok; // ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ true, ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ false ï¿½ï¿½ï¿½ï¿½
 	}
 	
 
@@ -126,7 +126,7 @@ public class AssetDAO {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 
-			while(rs.next()) { // °á°ú°¡ ÀÖÀ¸¸é
+			while(rs.next()) { // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				AssetDTO dto = new AssetDTO();
 				
 				dto.setM_code1(rs.getString("m_code1"));
@@ -172,7 +172,7 @@ public class AssetDAO {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 
-			while(rs.next()) { // °á°ú°¡ ÀÖÀ¸¸é
+			while(rs.next()) { // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				AssetDTO dto = new AssetDTO();
 				
 				dto.setM_code1(rs.getString("m_code1"));
@@ -219,7 +219,7 @@ public class AssetDAO {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 
-			while(rs.next()) { // °á°ú°¡ ÀÖÀ¸¸é
+			while(rs.next()) { // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				AssetDTO dto = new AssetDTO();
 				
 				dto.setM_code1(rs.getString("m_code2"));
@@ -268,7 +268,7 @@ public class AssetDAO {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 
-			while(rs.next()) { // °á°ú°¡ ÀÖÀ¸¸é
+			while(rs.next()) { // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				AssetDTO dto = new AssetDTO();
 				
 				dto.setA_code1(rs.getString("a_code1"));
@@ -313,7 +313,7 @@ public class AssetDAO {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 
-			while(rs.next()) { // °á°ú°¡ ÀÖÀ¸¸é
+			while(rs.next()) { // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				AssetDTO dto = new AssetDTO();
 				
 				dto.setA_code1(rs.getString("a_code1"));
@@ -360,7 +360,7 @@ public class AssetDAO {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 
-			while(rs.next()) { // °á°ú°¡ ÀÖÀ¸¸é
+			while(rs.next()) { // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				AssetDTO dto = new AssetDTO();
 				
 				dto.setA_code1(rs.getString("a_code2"));
@@ -407,7 +407,7 @@ public class AssetDAO {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 
-			while(rs.next()) { // °á°ú°¡ ÀÖÀ¸¸é
+			while(rs.next()) { // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				AssetDTO dto = new AssetDTO();
 				
 				dto.setO_code1(rs.getString("o_code1"));
@@ -452,7 +452,7 @@ public class AssetDAO {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 
-			while(rs.next()) { // °á°ú°¡ ÀÖÀ¸¸é
+			while(rs.next()) { // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				AssetDTO dto = new AssetDTO();
 				
 				dto.setO_code1(rs.getString("o_code1"));
@@ -497,7 +497,7 @@ public class AssetDAO {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 
-			while(rs.next()) { // °á°ú°¡ ÀÖÀ¸¸é
+			while(rs.next()) { // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				AssetDTO dto = new AssetDTO();
 				
 				dto.setL_code1(rs.getString("l_code1"));
@@ -542,7 +542,7 @@ public class AssetDAO {
 		
 		long time = System.currentTimeMillis(); 
 		SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM");
-		String time_in = dayTime.format(new Date(time)); //½Ã°£±îÁö ¸ðµÎ Ãâ·Â
+		String time_in = dayTime.format(new Date(time)); //ï¿½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 				
 		if(getdate == null){
 			getdate = time_in;
@@ -561,7 +561,7 @@ public class AssetDAO {
 								+ getdate + "-31' AND a_adddate BETWEEN '" + adddate + "-01' AND '"
 								+ adddate + "-31'";
 
-// Á¶°Ç¹® ½ÃÀÛ
+// ï¿½ï¿½ï¿½Ç¹ï¿½ ï¿½ï¿½ï¿½ï¿½
 		if(add_dto.getA_name() != null && !add_dto.getA_name().equals("null")){
 		//	a_name = new String(add_dto.getA_name().getBytes("8859_1"), "EUC-KR");
 			sql_condition = sql_condition + " AND ";
@@ -648,7 +648,7 @@ public class AssetDAO {
 			ps = con.prepareStatement(sql_condition);
 			rs = ps.executeQuery();
 
-			while (rs.next()) { // °á°ú°¡ ÀÖÀ¸¸é
+			while (rs.next()) { // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				AssetDTO dto = new AssetDTO();
 				dto.setA_gnum(rs.getString("a_gnum"));
 				dto.setA_anum(rs.getString("a_anum"));
@@ -719,7 +719,7 @@ public class AssetDAO {
 			
 			sql = sql + " GROUP BY assets.a_anum";
 
-			if(rs.next()) { // °á°ú°¡ ÀÖÀ¸¸é
+			if(rs.next()) { // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				
 				dto.setA_anum(rs.getString("a_anum"));
 				dto.setA_gnum(rs.getString("a_gnum"));
@@ -778,7 +778,7 @@ public class AssetDAO {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			
-			if(rs.next()) { // °á°ú°¡ ÀÖÀ¸¸é
+			if(rs.next()) { // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				
 				dto.setA_anum(rs.getString("a_anum"));
 				dto.setA_gnum(rs.getString("a_gnum"));
@@ -826,7 +826,7 @@ public class AssetDAO {
 		return dto;
 	}
 	
-	public boolean updateAsset(AssetDTO dto) { // ÀúÀå ¼º°ø½Ã true ½ÇÆÐ½Ã false (ÀÌ°É		
+	public boolean updateAsset(AssetDTO dto) { // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ true ï¿½ï¿½ï¿½Ð½ï¿½ false (ï¿½Ì°ï¿½		
 
 		boolean ok = false;
 		String sql = "UPDATE assets SET a_gnum = ?, a_company = ?, a_place = ?, a_dept = ?, a_locate = ?," +
@@ -834,7 +834,7 @@ public class AssetDAO {
 				" a_amodel = ?, a_vendorname = ?, a_bigo = ?, a_spec = ?, a_attachment = ?, a_enable = ? where a_anum = '" + dto.getA_anum() + "'";
 		
 		Connection con = null;
-		PreparedStatement ps = null; // ÁØºñµÈ ¸í·É ¹«¾ùÀÌ? À§¿¡ ??µéÀ» Ã¤¿ì°Ú´Ù.
+		PreparedStatement ps = null; // ï¿½Øºï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½? ï¿½ï¿½ï¿½ï¿½ ??ï¿½ï¿½ï¿½ï¿½ Ã¤ï¿½ï¿½Ú´ï¿½.
 
 		try {
 			con = getCon();
@@ -863,10 +863,10 @@ public class AssetDAO {
 			} else ps.setString(19, "1");
 			
 			int cnt = ps.executeUpdate(); // insert, update, delete, select :
-			// executeQuery() ¸Þ¼Òµå »ç¿ë
+			// executeQuery() ï¿½Þ¼Òµï¿½ ï¿½ï¿½ï¿½
 			
 			if (cnt == 1)
-				ok = true; // executeUpdate °¡ ¼º°øÇÏ¸é 1À» ¹ÝÈ¯ÇÑ´Ù.
+				ok = true; // executeUpdate ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ 1ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ñ´ï¿½.
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -883,16 +883,16 @@ public class AssetDAO {
 				}
 			}
 		}
-		return ok; // ¼º°øÇÏ¸é true, ½ÇÆÐÇÏ¸é false ¸®ÅÏ
+		return ok; // ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ true, ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ false ï¿½ï¿½ï¿½ï¿½
 	}
 	
-	public boolean deleteAsset(String anum) { // ÀúÀå ¼º°ø½Ã true ½ÇÆÐ½Ã false (ÀÌ°É		
+	public boolean deleteAsset(String anum) { // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ true ï¿½ï¿½ï¿½Ð½ï¿½ false (ï¿½Ì°ï¿½		
 
 		boolean ok = false;
 		String sql = "UPDATE assets SET a_enable = ? where a_anum = '" + anum + "'";
 
 		Connection con = null;
-		PreparedStatement ps = null; // ÁØºñµÈ ¸í·É ¹«¾ùÀÌ? À§¿¡ ??µéÀ» Ã¤¿ì°Ú´Ù.
+		PreparedStatement ps = null; // ï¿½Øºï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½? ï¿½ï¿½ï¿½ï¿½ ??ï¿½ï¿½ï¿½ï¿½ Ã¤ï¿½ï¿½Ú´ï¿½.
 
 		try {
 			con = getCon();
@@ -900,9 +900,9 @@ public class AssetDAO {
 			ps.setString(1, "0");
 
 			int cnt = ps.executeUpdate(); // insert, update, delete, select :
-			// executeQuery() ¸Þ¼Òµå »ç¿ë
+			// executeQuery() ï¿½Þ¼Òµï¿½ ï¿½ï¿½ï¿½
 			if (cnt == 1)
-				ok = true; // executeUpdate °¡ ¼º°øÇÏ¸é 1À» ¹ÝÈ¯ÇÑ´Ù.
+				ok = true; // executeUpdate ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ 1ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ñ´ï¿½.
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -919,7 +919,7 @@ public class AssetDAO {
 				}
 			}
 		}
-		return ok; // ¼º°øÇÏ¸é true, ½ÇÆÐÇÏ¸é false ¸®ÅÏ
+		return ok; // ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ true, ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ false ï¿½ï¿½ï¿½ï¿½
 	}
 	
 	// Jinyoung
@@ -972,27 +972,27 @@ public class AssetDAO {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 
-			while (rs.next()) { // °á°ú°¡ ÀÖÀ¸¸é
+			while (rs.next()) { // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				AssetDTO dto = new AssetDTO();
 				
-				dto.setA_anum(rs.getString("assets.a_anum"));	   // ÀÚ»ê¹øÈ£
+				dto.setA_anum(rs.getString("assets.a_anum"));	   // ï¿½Ú»ï¿½ï¿½È£
 				
-				dto.setA_code1(rs.getString("a_code1.a_code1"));   // ÀÚ»ê±¸ºÐÄÚµå
-				dto.setA_code2(rs.getString("a_code2.a_code2"));   // ÀÚ»êÁ¾·ù
-				dto.setA_code3(rs.getString("a_code3.a_code3"));   // ÀÚ»êÀ¯Çü
+				dto.setA_code1(rs.getString("a_code1.a_code1"));   // ï¿½Ú»ê±¸ï¿½ï¿½ï¿½Úµï¿½
+				dto.setA_code2(rs.getString("a_code2.a_code2"));   // ï¿½Ú»ï¿½ï¿½ï¿½ï¿½ï¿½
+				dto.setA_code3(rs.getString("a_code3.a_code3"));   // ï¿½Ú»ï¿½ï¿½ï¿½ï¿½ï¿½
 				
-				dto.setA_code1_name(rs.getString("a_code1.a_name"));   // ÀÚ»ê±¸ºÐÀÌ¸§
-				dto.setA_code2_name(rs.getString("a_code2.a_name"));   // ÀÚ»êÁ¾·ù
-				dto.setA_code3_name(rs.getString("a_code3.a_name"));   // ÀÚ»êÀ¯Çü(Àåºñ¸í)
+				dto.setA_code1_name(rs.getString("a_code1.a_name"));   // ï¿½Ú»ê±¸ï¿½ï¿½ï¿½Ì¸ï¿½
+				dto.setA_code2_name(rs.getString("a_code2.a_name"));   // ï¿½Ú»ï¿½ï¿½ï¿½ï¿½ï¿½
+				dto.setA_code3_name(rs.getString("a_code3.a_name"));   // ï¿½Ú»ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½)
 				
-				dto.setA_aname(rs.getString("assets.a_aname"));   // ÀÚ»êµî·Ï½Ã »ç¿ëÀÚ ÀÔ·Â Ç°¸í
-				dto.setA_amodel(rs.getString("assets.a_amodel")); // ¸ðµ¨¸í
+				dto.setA_aname(rs.getString("assets.a_aname"));   // ï¿½Ú»ï¿½ï¿½Ï½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ Ç°ï¿½ï¿½
+				dto.setA_amodel(rs.getString("assets.a_amodel")); // ï¿½ðµ¨¸ï¿½
 				
-				dto.setA_company(rs.getString("m_code1.m_name")); // È¸»çÀÌ¸§
-				dto.setA_place(rs.getString("m_code2.m_name"));   // »ç¾÷Àå
-				dto.setA_dept(rs.getString("m_code3.m_name"));    // ºÎ¼­
+				dto.setA_company(rs.getString("m_code1.m_name")); // È¸ï¿½ï¿½ï¿½Ì¸ï¿½
+				dto.setA_place(rs.getString("m_code2.m_name"));   // ï¿½ï¿½ï¿½ï¿½ï¿½
+				dto.setA_dept(rs.getString("m_code3.m_name"));    // ï¿½Î¼ï¿½
 				
-				dto.setA_name(rs.getString("assets.a_name"));     // ÀÚ»ê¼ÒÀ¯ÀÚÀÌ¸§
+				dto.setA_name(rs.getString("assets.a_name"));     // ï¿½Ú»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
 				
 				lists.add(dto);
 				}
@@ -1022,7 +1022,7 @@ public class AssetDAO {
 		return lists;
 	}
 	
-//////////////////////////////////////////////°Å´Ï°Å´Ï//////////////////////
+//////////////////////////////////////////////ï¿½Å´Ï°Å´ï¿½//////////////////////
 	public String getAssetName(String a_anum) {
 		String anum="";
 
@@ -1040,7 +1040,7 @@ public class AssetDAO {
 			ps.setString(1, a_anum);
 			rs = ps.executeQuery();
 
-			while (rs.next()) { // °á°ú°¡ ÀÖÀ¸¸é
+			while (rs.next()) { // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				anum=rs.getString("a_aname");
 				}
 		} catch (Exception e) {
@@ -1084,7 +1084,7 @@ public class AssetDAO {
 			ps.setString(1, a_anum);
 			rs = ps.executeQuery();
 
-			while (rs.next()) { // °á°ú°¡ ÀÖÀ¸¸é
+			while (rs.next()) { // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				acode=rs.getString("a_code3");
 				}
 		} catch (Exception e) {
@@ -1128,7 +1128,7 @@ public class AssetDAO {
 			ps.setString(2, anum);
 			
 			int cnt =ps.executeUpdate();	
-			if(cnt==1) result = true; // ÀúÀå ok
+			if(cnt==1) result = true; // ï¿½ï¿½ï¿½ï¿½ ok
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -1169,18 +1169,18 @@ public class AssetDAO {
 			ps.setString(1, anum);
 			rs = ps.executeQuery();
 
-			while (rs.next()) { // °á°ú°¡ ÀÖÀ¸¸é
+			while (rs.next()) { // ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				AssetDTO dto = new AssetDTO();
 				
-				dto.setA_anum(rs.getString("a_history.a_anum"));	   // ÀÚ»ê¹øÈ£
-				dto.setA_id(rs.getString("a_history.a_id")); //¼ÒÀ¯ÀÚ ID
-				dto.setM_name(rs.getString("member.m_name")); // ¼ÒÀ¯ÀÚ ÀÌ¸§
+				dto.setA_anum(rs.getString("a_history.a_anum"));	   // ï¿½Ú»ï¿½ï¿½È£
+				dto.setA_id(rs.getString("a_history.a_id")); //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ID
+				dto.setM_name(rs.getString("member.m_name")); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½
 				
-				dto.setA_company(rs.getString("m_code1.m_name")); // È¸»çÀÌ¸§
-				dto.setA_place(rs.getString("m_code2.m_name"));   // »ç¾÷Àå
-				dto.setA_dept(rs.getString("m_code3.m_name"));    // ºÎ¼­
+				dto.setA_company(rs.getString("m_code1.m_name")); // È¸ï¿½ï¿½ï¿½Ì¸ï¿½
+				dto.setA_place(rs.getString("m_code2.m_name"));   // ï¿½ï¿½ï¿½ï¿½ï¿½
+				dto.setA_dept(rs.getString("m_code3.m_name"));    // ï¿½Î¼ï¿½
 				
-				dto.setA_getdate(rs.getString("a_getdate")); //³¯Â¥
+				dto.setA_getdate(rs.getString("a_getdate")); //ï¿½ï¿½Â¥
 								
 				lists.add(dto);
 				}
@@ -1210,29 +1210,29 @@ public class AssetDAO {
 		return lists;
 	}
 	
-	public boolean insertA_history(AssetDTO dto) throws UnsupportedEncodingException { // ÀúÀå ¼º°ø½Ã true ½ÇÆÐ½Ã false (ÀÌ°É		
+	public boolean insertA_history(AssetDTO dto) throws UnsupportedEncodingException { // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ true ï¿½ï¿½ï¿½Ð½ï¿½ false (ï¿½Ì°ï¿½		
 
 		boolean ok = false;
 		String sql = "INSERT INTO a_history (a_gnum, a_anum, a_getdate, a_id)";
 			   sql += "VALUE (?, ?, ?, ?)";	// TOOL
 
 		Connection con = null;
-		PreparedStatement ps = null; // ÁØºñµÈ ¸í·É ¹«¾ùÀÌ? À§¿¡ ??µéÀ» Ã¤¿ì°Ú´Ù.
+		PreparedStatement ps = null; // ï¿½Øºï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½? ï¿½ï¿½ï¿½ï¿½ ??ï¿½ï¿½ï¿½ï¿½ Ã¤ï¿½ï¿½Ú´ï¿½.
 		ResultSet rs = null;
 
 		try {
 			con = getCon();
 			ps = con.prepareStatement(sql);
-			// ?¿¡ °ªµéÀ» Ã¤¿î´Ù.
+			// ?ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¤ï¿½ï¿½ï¿½.
 			ps.setString(1, "LDCC");
 			ps.setString(2, dto.getA_anum());
 			ps.setString(3, dto.getA_getdate());
 			ps.setString(4, dto.getA_id());
 			
 			int cnt = ps.executeUpdate(); // insert, update, delete, select :
-			// executeQuery() ¸Þ¼Òµå »ç¿ë
+			// executeQuery() ï¿½Þ¼Òµï¿½ ï¿½ï¿½ï¿½
 			if (cnt == 1)
-				ok = true; // executeUpdate °¡ ¼º°øÇÏ¸é 1À» ¹ÝÈ¯ÇÑ´Ù.
+				ok = true; // executeUpdate ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ 1ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ñ´ï¿½.
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -1255,7 +1255,7 @@ public class AssetDAO {
 				}
 			}
 		}
-		return ok; // ¼º°øÇÏ¸é true, ½ÇÆÐÇÏ¸é false ¸®ÅÏ
+		return ok; // ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ true, ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ false ï¿½ï¿½ï¿½ï¿½
 	}
 	
 }
